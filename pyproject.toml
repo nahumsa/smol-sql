@@ -1,0 +1,12 @@
+[project]
+name = "sql-sft"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=3.2.0",
+    "huggingface-hub>=0.27.1",
+    "transformers>=4.47.1",
+    "trl>=0.13.0",
+]
