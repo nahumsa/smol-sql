@@ -4,7 +4,7 @@ from datasets import load_dataset
 from trl import SFTConfig, SFTTrainer, setup_chat_format
 import torch
 
-login()
+# login()
 
 
 def process_dataset(sample):
@@ -42,7 +42,7 @@ ds = ds.map(process_dataset)
 # Configure the SFTTrainer
 sft_config = SFTConfig(
     output_dir="./sft_output",
-    max_steps=1000,  # Adjust based on dataset size and desired training duration
+    max_steps=2000,  # Adjust based on dataset size and desired training duration
     per_device_train_batch_size=4,  # Set according to your GPU memory capacity
     learning_rate=5e-5,  # Common starting point for fine-tuning
     logging_steps=10,  # Frequency of logging training metrics
