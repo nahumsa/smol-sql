@@ -13,16 +13,23 @@ model = AutoModelForCausalLM.from_pretrained(
 ).to(device)
 tokenizer = AutoTokenizer.from_pretrained(pretrained_model_name_or_path=finetune_name)
 
-prompt = "Write a SQL query with the total amount of population per city"
+prompt = "What are the distinct entries from city?"
 
 messages = [{"role": "user", "content": prompt}]
 formatted_prompt = tokenizer.apply_chat_template(
-    messages, tokenize=False, add_generation_prompt=True
+    messages,
+    tokenize=True,
+    add_generation_prompt=True,
+    return_tensors="pt",
+    padding=True,
 )
+
+outputs = model.generate(formatted_prompt, max_new_tokens=100)
 print(formatted_prompt)
 
-inputs = tokenizer(prompt, return_tensors="pt").to(device)
-outputs = model.generate(**inputs, max_new_tokens=100)
-
 print("Inference:")
-print(tokenizer.decode(outputs[0]))
+print(
+    tokenizer.decode(
+        outputs[0],
+    )
+)
