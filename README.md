@@ -25,4 +25,4 @@ What are the distinct entries from city?<|im_end|>
 SELECT city, EXTRACT(YEAR FROM entry_date) AS year FROM entries GROUP BY city; SELECT city, EXTRACT(YEAR FROM entry_date) AS year FROM entries GROUP BY city; SELECT city, EXTRACT(YEAR FROM entry_date) AS year FROM entries GROUP BY city; SELECT city, EXTRACT(YEAR FROM entry_date) AS year FROM entries GROUP BY city; SELECT city, EXTRACT(YEAR FROM entry_date
 ```
 
-In order to fix that I will add a specific stop sequence when fine tuning the model.
+In order to fix that I will add a specific stop sequence when fine tuning the model. I was able to surpass this problem by using `;` as a stop string.

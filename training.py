@@ -39,6 +39,7 @@ finetune_tags = ["smol-course", "module_1"]
 ds = load_dataset(path="gretelai/synthetic_text_to_sql")
 ds = ds.map(process_dataset)
 
+
 # Configure the SFTTrainer
 sft_config = SFTConfig(
     output_dir="./sft_output",

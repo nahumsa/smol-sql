@@ -13,7 +13,7 @@ model = AutoModelForCausalLM.from_pretrained(
 ).to(device)
 tokenizer = AutoTokenizer.from_pretrained(pretrained_model_name_or_path=finetune_name)
 
-prompt = "What are the distinct entries from city?"
+prompt = "What's the average yard of a running back for the season?"
 
 messages = [{"role": "user", "content": prompt}]
 formatted_prompt = tokenizer.apply_chat_template(
@@ -24,7 +24,13 @@ formatted_prompt = tokenizer.apply_chat_template(
     padding=True,
 )
 
-outputs = model.generate(formatted_prompt, max_new_tokens=100)
+outputs = model.generate(
+    formatted_prompt,
+    max_new_tokens=100,
+    repetition_penalty=6.0,
+    tokenizer=tokenizer,
+    stop_strings=";",
+)
 print(formatted_prompt)
 
 print("Inference:")
